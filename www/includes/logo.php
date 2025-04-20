@@ -1,0 +1,1 @@
+<img width="88" src="/upload/img/goride-logo.svg" height="17">

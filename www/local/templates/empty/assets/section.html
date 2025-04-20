@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>Список товаров раздела</title>
+    <link rel="stylesheet" type="text/css" href="css/slick.css"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<header class="header header--catalog">
+    <div class="container">
+        <div class="header__wrp">
+            <div class="header__wrp-nav header__wrp-nav--catalog">
+                <a href="index.html">
+                    <img src="./img/goride-logo.svg" alt="logo">
+                </a>
+                <nav class="header__nav-list-wrp">
+                    <ul class="header__nav-list">
+                        <li><a href="#">контакты</a></li>
+                        <li><a href="#">отзывы</a></li>
+                        <li><a href="#">доставка и оплата</a></li>
+                    </ul>
+                </nav>
+                <div class="header__nav-box header__search">
+                    <form action="#">
+                        <label>
+                            <input type="search" placeholder="Поиск">
+                            <span class="visually-hidden">поиск</span>
+                        </label>
+                    </form>
+                    <a href="#">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                    d="M0.5 2.8275C0.5 1.54183 1.54183 0.5 2.8275 0.5H19.1725C20.4582 0.5 21.5 1.54183 21.5 2.8275V19.1725C21.5 19.7898 21.2548 20.3818 20.8183 20.8183C20.3818 21.2548 19.7898 21.5 19.1725 21.5H2.8275C2.21021 21.5 1.6182 21.2548 1.18171 20.8183C0.745218 20.3818 0.5 19.7898 0.5 19.1725V2.8275ZM4.4165 18H17.8215C17.0697 16.919 16.0674 16.036 14.9003 15.4265C13.7331 14.817 12.4357 14.4991 11.119 14.5C9.80227 14.4991 8.5049 14.817 7.33773 15.4265C6.17056 16.036 5.16827 16.919 4.4165 18ZM11 12.1667C11.5362 12.1667 12.0672 12.061 12.5626 11.8558C13.058 11.6506 13.5082 11.3499 13.8874 10.9707C14.2665 10.5915 14.5673 10.1414 14.7725 9.64596C14.9777 9.15054 15.0833 8.61956 15.0833 8.08333C15.0833 7.5471 14.9777 7.01612 14.7725 6.52071C14.5673 6.0253 14.2665 5.57515 13.8874 5.19598C13.5082 4.81681 13.058 4.51603 12.5626 4.31083C12.0672 4.10562 11.5362 4 11 4C9.91703 4 8.87842 4.43021 8.11265 5.19598C7.34687 5.96175 6.91667 7.00037 6.91667 8.08333C6.91667 9.1663 7.34687 10.2049 8.11265 10.9707C8.87842 11.7365 9.91703 12.1667 11 12.1667Z"
+                                    fill="#FFFEFE"/>
+                        </svg>
+                    </a>
+                    <a href="#">
+                        <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                    d="M0 0.700022C0 0.514364 0.0737521 0.336311 0.205032 0.205032C0.336311 0.073752 0.514364 0 0.700022 0H2.80009C2.95623 4.31374e-05 3.10789 0.0522926 3.23092 0.148439C3.35396 0.244586 3.44132 0.379109 3.47911 0.530616L4.04612 2.80009H20.3006C20.4034 2.80018 20.5049 2.82291 20.5979 2.86666C20.6909 2.91041 20.7732 2.9741 20.8388 3.05322C20.9044 3.13234 20.9518 3.22493 20.9776 3.32443C21.0034 3.42392 21.007 3.52788 20.988 3.62891L18.888 14.8293C18.858 14.9897 18.7728 15.1346 18.6473 15.2389C18.5218 15.3432 18.3638 15.4003 18.2006 15.4005H5.60017C5.43697 15.4003 5.27895 15.3432 5.15343 15.2389C5.02791 15.1346 4.94278 14.9897 4.91275 14.8293L2.81409 3.64991L2.25407 1.40004H0.700022C0.514364 1.40004 0.336311 1.32629 0.205032 1.19501C0.0737521 1.06373 0 0.885679 0 0.700022ZM7.00022 15.4005C6.25759 15.4005 5.54537 15.6955 5.02026 16.2206C4.49514 16.7457 4.20013 17.4579 4.20013 18.2006C4.20013 18.9432 4.49514 19.6554 5.02026 20.1805C5.54537 20.7056 6.25759 21.0006 7.00022 21.0006C7.74285 21.0006 8.45506 20.7056 8.98018 20.1805C9.50529 19.6554 9.8003 18.9432 9.8003 18.2006C9.8003 17.4579 9.50529 16.7457 8.98018 16.2206C8.45506 15.6955 7.74285 15.4005 7.00022 15.4005ZM16.8005 15.4005C16.0579 15.4005 15.3457 15.6955 14.8206 16.2206C14.2954 16.7457 14.0004 17.4579 14.0004 18.2006C14.0004 18.9432 14.2954 19.6554 14.8206 20.1805C15.3457 20.7056 16.0579 21.0006 16.8005 21.0006C17.5431 21.0006 18.2554 20.7056 18.7805 20.1805C19.3056 19.6554 19.6006 18.9432 19.6006 18.2006C19.6006 17.4579 19.3056 16.7457 18.7805 16.2206C18.2554 15.6955 17.5431 15.4005 16.8005 15.4005ZM7.00022 16.8005C7.37153 16.8005 7.72764 16.948 7.9902 17.2106C8.25276 17.4731 8.40026 17.8292 8.40026 18.2006C8.40026 18.5719 8.25276 18.928 7.9902 19.1905C7.72764 19.4531 7.37153 19.6006 7.00022 19.6006C6.6289 19.6006 6.2728 19.4531 6.01024 19.1905C5.74768 18.928 5.60017 18.5719 5.60017 18.2006C5.60017 17.8292 5.74768 17.4731 6.01024 17.2106C6.2728 16.948 6.6289 16.8005 7.00022 16.8005ZM16.8005 16.8005C17.1718 16.8005 17.5279 16.948 17.7905 17.2106C18.0531 17.4731 18.2006 17.8292 18.2006 18.2006C18.2006 18.5719 18.0531 18.928 17.7905 19.1905C17.5279 19.4531 17.1718 19.6006 16.8005 19.6006C16.4292 19.6006 16.0731 19.4531 15.8105 19.1905C15.548 18.928 15.4005 18.5719 15.4005 18.2006C15.4005 17.8292 15.548 17.4731 15.8105 17.2106C16.0731 16.948 16.4292 16.8005 16.8005 16.8005Z"
+                                    fill="#FFFEFE"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header__catalog-nav container">
+        <a href="#">каталог</a>
+        <nav class="header__catalog-categories">
+            <ul>
+                <li>
+                    <a href="#">велосипеды</a>
+                    <ul class="header__sub-catalog-categories">
+                        <li><a href="#">горные</a></li>
+                        <li><a href="#">городские</a></li>
+                        <li><a href="#">гоночные</a></li>
+                        <li><a href="#">гибридные</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">одежда</a></li>
+                <li><a href="#">аксессуары</a></li>
+                <li><a href="#">обувь</a></li>
+                <li><a href="#">снаряжение</a></li>
+                <li><a href="#">распродажа</a></li>
+            </ul>
+        </nav>
+        <nav class="header__catalog-nav-list-wrp">
+            <ul class="header__catalog-nav-list">
+                <li><a href="#">доставка</a></li>
+                <li><a href="#">распродажа</a></li>
+                <li><a href="#">отзывы</a></li>
+                <li><a href="#">контакты</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="header__inner">
+        <div class="container">
+            <nav>
+                <ul class="header__inner-breadcrumbs-list">
+                    <li><a href="#">bikes&nbsp/&nbsp</a></li>
+                    <li><a>mountain bikes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="products-list">
+        <div class="container">
+            <h2>Горные велосипеды</h2>
+            <div class="products-list__wrp">
+                <div class="products-list__item">
+                    <div class="products-list__content-wrp">
+                        <img src="img/good-1.jpg" alt="good-1">
+                        <div class="goods__item-content-wrp">
+                            <h3><a href="product.html">Cycling Gloves, Adult</a></h3>
+                            <p>95.00 р</p>
+                            <p>Артикул</p>
+                        </div>
+                    </div>
+                    <button>купить</button>
+                </div>
+                <div class="products-list__item">
+                    <div class="products-list__content-wrp">
+                        <img src="img/good-1.jpg" alt="good-1">
+                        <div class="goods__item-content-wrp">
+                            <h3><a href="product.html">Cycling Gloves, Adult</a></h3>
+                            <p>95.00 р</p>
+                            <p>Артикул</p>
+                        </div>
+                    </div>
+                    <button>купить</button>
+                </div>
+                <div class="products-list__item">
+                    <div class="products-list__content-wrp">
+                        <img src="img/good-1.jpg" alt="good-1">
+                        <div class="goods__item-content-wrp">
+                            <h3><a href="product.html">Cycling Gloves, Adult</a></h3>
+                            <p>95.00 р</p>
+                            <p>Артикул</p>
+                        </div>
+                    </div>
+                    <button>купить</button>
+                </div>
+                <div class="products-list__item">
+                    <div class="products-list__content-wrp">
+                        <img src="img/good-1.jpg" alt="good-1">
+                        <div class="goods__item-content-wrp">
+                            <h3><a href="product.html">Cycling Gloves, Adult</a></h3>
+                            <p>95.00 р</p>
+                            <p>Артикул</p>
+                        </div>
+                    </div>
+                    <button>купить</button>
+                </div>
+                <div class="products-list__item">
+                    <div class="products-list__content-wrp">
+                        <img src="img/good-1.jpg" alt="good-1">
+                        <div class="goods__item-content-wrp">
+                            <h3><a href="product.html">Cycling Gloves, Adult</a></h3>
+                            <p>95.00 р</p>
+                            <p>Артикул</p>
+                        </div>
+                    </div>
+                    <button>купить</button>
+                </div>
+                <div class="products-list__item">
+                    <div class="products-list__content-wrp">
+                        <img src="img/good-1.jpg" alt="good-1">
+                        <div class="goods__item-content-wrp">
+                            <h3><a href="product.html">Cycling Gloves, Adult</a></h3>
+                            <p>95.00 р</p>
+                            <p>Артикул</p>
+                        </div>
+                    </div>
+                    <button>купить</button>
+                </div>
+                <div class="products-list__item">
+                    <div class="products-list__content-wrp">
+                        <img src="img/good-1.jpg" alt="good-1">
+                        <div class="goods__item-content-wrp">
+                            <h3><a href="product.html">Cycling Gloves, Adult</a></h3>
+                            <p>95.00 р</p>
+                            <p>Артикул</p>
+                        </div>
+                    </div>
+                    <button>купить</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="favourite favourite--section">
+        <div class="favourite__slider">
+            <div class="slider slick-favourite-slider">
+                <div class="slider__item">
+                    <div class="slider__item-wrp">
+                        <img src="img/good-1.jpg" alt="good-1">
+                        <div class="slider__item-content-wrp">
+                            <h3><a href="#">Cycling Gloves, Adult</a></h3>
+                            <p>95.00 р</p>
+                            <p>Артикул</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider__item">
+                    <div class="slider__item-wrp">
+                        <img src="img/good-1.jpg" alt="good-1">
+                        <div class="slider__item-content-wrp">
+                            <h3><a href="#">Cycling Gloves, Adult</a></h3>
+                            <p>95.00 р</p>
+                            <p>Артикул</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider__item">
+                    <div class="slider__item-wrp">
+                        <img src="img/good-1.jpg" alt="good-1">
+                        <div class="slider__item-content-wrp">
+                            <h3><a href="#">Cycling Gloves, Adult</a></h3>
+                            <p>95.00 р</p>
+                            <p>Артикул</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider__item">
+                    <div class="slider__item-wrp">
+                        <img src="img/good-1.jpg" alt="good-1">
+                        <div class="slider__item-content-wrp">
+                            <h3><a href="#">Cycling Gloves, Adult</a></h3>
+                            <p>95.00 р</p>
+                            <p>Артикул</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider__item">
+                    <div class="slider__item-wrp">
+                        <img src="img/good-1.jpg" alt="good-1">
+                        <div class="slider__item-content-wrp">
+                            <h3><a href="#">Cycling Gloves, Adult</a></h3>
+                            <p>95.00 р</p>
+                            <p>Артикул</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider__item">
+                    <div class="slider__item-wrp">
+                        <img src="img/good-1.jpg" alt="good-1">
+                        <div class="slider__item-content-wrp">
+                            <h3><a href="#">Cycling Gloves, Adult</a></h3>
+                            <p>95.00 р</p>
+                            <p>Артикул</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider__item">
+                    <div class="slider__item-wrp">
+                        <img src="img/good-1.jpg" alt="good-1">
+                        <div class="slider__item-content-wrp">
+                            <h3><a href="#">Cycling Gloves, Adult</a></h3>
+                            <p>95.00 р</p>
+                            <p>Артикул</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="favourite__text">
+            <div class="favourite__text-wrp">
+                <h2>Распродажа</h2>
+            </div>
+        </div>
+    </section>
+</main>
+<footer class="footer">
+    <div class="container">
+        <div class="footer__wrp">
+            <nav>
+                <ul class="footer__nav-list">
+                    <li><a href="#">каталог</a></li>
+                    <li><a href="#">о магазине</a></li>
+                    <li><a href="#">контакты</a></li>
+                    <li><a href="#">доставка и оплата</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <ul class="footer__nav-list">
+                    <li><a href="#">карьера в нашем магазине</a></li>
+                    <li><a href="#">как оформить возврат</a></li>
+                    <li><a href="#">правила магазина</a></li>
+                    <li><a href="#">соглашение о конфиденциальности</a></li>
+                </ul>
+            </nav>
+            <div class="footer__form">
+                <h2>подписаться на новости магазина go&ride</h2>
+                <form action="#">
+                    <div class="footer__form-wrp">
+                        <label>
+                            <input type="email" placeholder="Enter your Email adress" required>
+                            <span class="visually-hidden">email</span>
+                        </label>
+                        <button>подписаться</button>
+                    </div>
+                    <span>Продолжая, вы соглашаетесь с нашей политикой конфиденциальности.</span>
+                </form>
+            </div>
+        </div>
+        <div class="footer__social-wrp">
+            <ul class="footer__social-list">
+                <li><a href="#">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M11.9999 8.09462C9.8495 8.09462 8.09462 9.8495 8.09462 11.9999C8.09462 14.1503 9.8495 15.9052 11.9999 15.9052C14.1503 15.9052 15.9052 14.1503 15.9052 11.9999C15.9052 9.8495 14.1503 8.09462 11.9999 8.09462ZM23.7128 11.9999C23.7128 10.3827 23.7274 8.78017 23.6366 7.16591C23.5458 5.29091 23.1181 3.62685 21.747 2.25575C20.3729 0.881731 18.7118 0.456926 16.8368 0.366106C15.2196 0.275285 13.6171 0.289934 12.0028 0.289934C10.3856 0.289934 8.7831 0.275285 7.16884 0.366106C5.29384 0.456926 3.62978 0.88466 2.25868 2.25575C0.88466 3.62978 0.459856 5.29091 0.369035 7.16591C0.278215 8.7831 0.292864 10.3856 0.292864 11.9999C0.292864 13.6142 0.278215 15.2196 0.369035 16.8339C0.459856 18.7089 0.88759 20.3729 2.25868 21.744C3.63271 23.1181 5.29384 23.5429 7.16884 23.6337C8.78603 23.7245 10.3886 23.7099 12.0028 23.7099C13.62 23.7099 15.2226 23.7245 16.8368 23.6337C18.7118 23.5429 20.3759 23.1151 21.747 21.744C23.121 20.37 23.5458 18.7089 23.6366 16.8339C23.7304 15.2196 23.7128 13.6171 23.7128 11.9999ZM11.9999 18.0087C8.6747 18.0087 5.99111 15.3251 5.99111 11.9999C5.99111 8.6747 8.6747 5.99111 11.9999 5.99111C15.3251 5.99111 18.0087 8.6747 18.0087 11.9999C18.0087 15.3251 15.3251 18.0087 11.9999 18.0087ZM18.2548 7.14833C17.4784 7.14833 16.8515 6.52138 16.8515 5.74501C16.8515 4.96865 17.4784 4.34169 18.2548 4.34169C19.0311 4.34169 19.6581 4.96865 19.6581 5.74501C19.6583 5.92936 19.6222 6.11195 19.5517 6.28231C19.4813 6.45268 19.3779 6.60747 19.2476 6.73783C19.1172 6.86818 18.9624 6.97154 18.7921 7.04198C18.6217 7.11242 18.4391 7.14856 18.2548 7.14833Z"
+                                fill="#FFFEFE"/>
+                    </svg>
+                </a></li>
+                <li><a href="#">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M20.8178 0H2.60222C1.171 0 0 1.171 0 2.60222V20.8178C0 22.2503 1.171 23.42 2.60222 23.42H11.71V14.3122H9.10778V11.092H11.71V8.42469C11.71 5.60909 13.2869 3.6314 16.61 3.6314L18.9559 3.634V7.0234H17.3985C16.1052 7.0234 15.6133 7.99403 15.6133 8.8944V11.0933H18.9546L18.2156 14.3122H15.6133V23.42H20.8178C22.249 23.42 23.42 22.2503 23.42 20.8178V2.60222C23.42 1.171 22.249 0 20.8178 0Z"
+                                fill="#FFFEFE"/>
+                    </svg>
+                </a></li>
+                <li><a href="#">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path
+                                d="M20.9107 0H2.50929C1.12395 0 0 1.12395 0 2.50929V20.9107C0 22.296 1.12395 23.42 2.50929 23.42H20.9107C22.296 23.42 23.42 22.296 23.42 20.9107V2.50929C23.42 1.12395 22.296 0 20.9107 0ZM18.3544 8.30155C18.3648 8.44793 18.3648 8.59953 18.3648 8.74591C18.3648 13.2783 14.9146 18.5008 8.60999 18.5008C6.66529 18.5008 4.86174 17.9362 3.34571 16.9638C3.62278 16.9952 3.88939 17.0056 4.17169 17.0056C5.77658 17.0056 7.25079 16.462 8.42702 15.5419C6.92145 15.5105 5.65635 14.5225 5.22245 13.1633C5.75045 13.2417 6.22617 13.2417 6.76984 13.1006C5.20154 12.7817 4.02531 11.4016 4.02531 9.73394V9.69211C4.48012 9.94827 5.01334 10.1051 5.57271 10.126C5.10244 9.81321 4.71692 9.38884 4.45057 8.89079C4.18421 8.39274 4.0453 7.8365 4.04622 7.2717C4.04622 6.63392 4.21351 6.04842 4.51149 5.54134C6.20003 7.62195 8.73545 8.98115 11.5793 9.12753C11.0931 6.80121 12.834 4.91402 14.925 4.91402C15.9131 4.91402 16.8018 5.327 17.4291 5.99615C18.2028 5.84977 18.9451 5.56225 19.6038 5.17017C19.3476 5.96478 18.8092 6.63392 18.0982 7.05737C18.7883 6.98418 19.4574 6.79075 20.0743 6.52414C19.609 7.20897 19.0235 7.81538 18.3544 8.30155Z"
+                                fill="#FFFEFE"/>
+                    </svg>
+
+                </a></li>
+            </ul>
+            <span>2021 go&ride</span>
+        </div>
+    </div>
+</footer>
+<script defer src="js/jquery.js"></script>
+<script defer src="js/slick.js"></script>
+<script defer src="js/scripts.js"></script>
+</body>
+
+</html>
