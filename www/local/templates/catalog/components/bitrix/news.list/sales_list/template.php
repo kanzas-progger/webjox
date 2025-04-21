@@ -18,48 +18,72 @@ $linkedElementsData = [];
 ?>
 
 <?php if (!empty($arResult["ITEMS"])): ?>
-	<?php foreach ($arResult["ITEMS"] as $arItem): ?>
-		<?
-		$linkedElementsIds = array();
-		if (!empty($arItem['PROPERTIES']['good']['VALUE'])) {
-			$linkedElementsIds = is_array($arItem['PROPERTIES']['good']['VALUE'])
-				? $arItem['PROPERTIES']['good']['VALUE']
-				: array($arItem['PROPERTIES']['good']['VALUE']);
-		}
+    <?php foreach ($arResult["ITEMS"] as $arItem): ?>
+        <?
+        $linkedElementsIds = [];
 
-		if (!empty($linkedElementsIds)) {
-			$res = CIBlockElement::GetList(
-				array(),
-				array("ID" => $linkedElementsIds, "ACTIVE" => "Y"),
-				false,
-				false,
-				array("ID", "IBLOCK_ID", "NAME", "CODE", "PREVIEW_PICTURE", "PREVIEW_TEXT", "PROPERTY_*")
-			);
+        if (!empty($arItem['PROPERTIES']['good']['VALUE'])) {
+            $linkedElementsIds = is_array($arItem['PROPERTIES']['good']['VALUE'])
+                ? $arItem['PROPERTIES']['good']['VALUE']
+                : [$arItem['PROPERTIES']['good']['VALUE']];
+        }
 
-			while ($linkedElement = $res->GetNextElement()) {
-				$fields = $linkedElement->GetFields();
-				$props = $linkedElement->GetProperties();
+        if (!empty($linkedElementsIds)) {
+            $res = CIBlockElement::GetList(
+                [],
+                ["ID" => $linkedElementsIds, "ACTIVE" => "Y"],
+                false,
+                false,
+                ["ID", "IBLOCK_ID", "NAME", "CODE", "PREVIEW_PICTURE", "PREVIEW_TEXT"]
+            );
 
-				if (!empty($fields["PREVIEW_PICTURE"])) {
-					$fields["PREVIEW_PICTURE_SRC"] = CFile::GetPath($fields["PREVIEW_PICTURE"]);
-				}
+            while ($linkedElement = $res->GetNextElement()) {
+                $fields = $linkedElement->GetFields();
 
-				$discountValue = isset($arItem["PROPERTIES"]["discount"]["VALUE"]) 
-                    ? $arItem["PROPERTIES"]["discount"]["VALUE"] 
+                if (!empty($fields["PREVIEW_PICTURE"])) {
+                    $fields["PREVIEW_PICTURE_SRC"] = CFile::GetPath($fields["PREVIEW_PICTURE"]);
+                }
+
+                $price = null;
+                $offers = \CCatalogSKU::getOffersList(
+                    $fields['ID'],
+                    0,
+                    ['ACTIVE' => 'Y'],
+                    ['ID', 'IBLOCK_ID', 'CATALOG_QUANTITY'],
+                    []
+                );
+
+                if (!empty($offers[$fields['ID']])) {
+                    foreach ($offers[$fields['ID']] as $offer) {
+                        $priceRes = CPrice::GetList(
+                            [],
+                            [
+                                "PRODUCT_ID" => $offer['ID'],
+                                "CATALOG_GROUP_ID" => 1 
+                            ]
+                        );
+                        if ($priceArr = $priceRes->Fetch()) {
+                            $price = round($priceArr["PRICE"]);
+                            break; 
+                        }
+                    }
+                }
+
+                $discountValue = isset($arItem["PROPERTIES"]["discount"]["VALUE"])
+                    ? $arItem["PROPERTIES"]["discount"]["VALUE"]
                     : 0;
-			
-				$discountPrice = $props["price"]["VALUE"] - ($props["price"]["VALUE"] * $discountValue / 100);
 
-				$linkedElementsData[] = array(
-					"FIELDS" => $fields,
-					"PROPERTIES" => $props,
-					"DISCOUNT_PRICE" => $discountPrice
-				);
-			};
-		}
+                $discountPrice = $price - ($price * $discountValue / 100);
 
-		?>
-	<?php endforeach; ?>
+                $linkedElementsData[] = [
+                    "FIELDS" => $fields,
+                    "PRICE" => $price,
+                    "DISCOUNT_PRICE" => $discountPrice
+                ];
+            }
+        }
+        ?>
+    <?php endforeach; ?>
 <?php endif; ?>
 
 <?php if (!empty($linkedElementsData)): ?>
@@ -96,6 +120,6 @@ $linkedElementsData = [];
 
 <?php
 // echo '<pre>';
-// print_r($arResult);
+// print_r($linkedElementData);
 // echo '</pre>';
 ?>

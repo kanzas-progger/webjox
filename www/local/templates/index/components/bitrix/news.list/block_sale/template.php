@@ -15,52 +15,18 @@ $this->setFrameMode(true);
 
 <?php if (!empty($arResult["ITEMS"])): ?>
 	<?
-	$linkedItems = [];
 
-	foreach ($arResult["ITEMS"] as $key => $arItem) {
-		if (!empty($arItem['PROPERTIES']['good']['VALUE'])) {
-			$linkedItems[$key] = $arItem;
-		}
-	}
-
-	if (!empty($linkedItems)):
-
-		$randomKey = array_rand($linkedItems);
-		$randomItem = $linkedItems[$randomKey];
-
-		$linkedItemsIds = is_array($randomItem['PROPERTIES']['good']['VALUE'])
-			? $randomItem['PROPERTIES']['good']['VALUE']
-			: array($randomItem['PROPERTIES']['good']['VALUE']);
-
-		$res = CIBlockElement::GetList(
-			array(),
-			array("ID" => $linkedItemsIds, "ACTIVE" => "Y"),
-			false,
-			false,
-			array("ID", "IBLOCK_ID", "NAME", "PREVIEW_PICTURE")
-		);
-
-		if ($linkedElement = $res->GetNext()) {
-			$imageSrc = "";
-			if (!empty($linkedElement["PREVIEW_PICTURE"])) {
-				$imageSrc = CFile::GetPath($linkedElement["PREVIEW_PICTURE"]);
-			}
-
-			if (!empty($imageSrc)):
+	$randomKey = array_rand($arResult["ITEMS"]);
+	$randomItem = $arResult["ITEMS"][$randomKey];
 
 	?>
 
-				<section class="sale">
-					<div class="container sale__wrp">
-						<h2><?= $randomItem["NAME"] ?></h2>
-						<div class="sale__img-wrp">
-							<img src="<?= $imageSrc ?>" width="550" height="550">
-						</div>
-					</div>
-				</section>
-<?php
-			endif;
-		}
-	endif;
-endif;
-?>
+	<section class="sale">
+		<div class="container sale__wrp">
+			<h2><?= $randomItem["NAME"] ?></h2>
+			<div class="sale__img-wrp">
+				<img src="<?= $randomItem['PREVIEW_PICTURE']['SRC'] ?>" width="550" height="550">
+			</div>
+		</div>
+	</section>
+<?php endif; ?>

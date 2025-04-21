@@ -121,7 +121,31 @@ $containerName = 'catalog-products-viewed-container';
 					$productId = $item['ID'];
 					$res = CIBlockElement::GetProperty($item["IBLOCK_ID"], $productId, [], ["CODE" => "price"]);
 					$prop = $res->Fetch();
-					$price = $prop["VALUE"];
+
+					$price = null;
+						$res = \CCatalogSKU::getOffersList(
+							$productId,
+							0,
+							array('ACTIVE' => 'Y'),
+							array("ID", "IBLOCK_ID", "CATALOG_QUANTITY"),
+							array()
+						);
+
+						if (!empty($res[$productId])) {
+							foreach ($res[$productId] as $offer) {
+								$priceRes = CPrice::GetList(
+									array(),
+									array(
+										"PRODUCT_ID" => $offer['ID'],
+										"CATALOG_GROUP_ID" => 1
+									)
+								);
+								if ($priceArr = $priceRes->Fetch()) {
+									$price = round($priceArr["PRICE"]);
+								}
+							}
+						}
+					
 
 					?>
 					<div class="slider__item">
